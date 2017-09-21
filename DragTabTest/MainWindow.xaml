@@ -1,0 +1,125 @@
+﻿<Window x:Class="DragTabTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DragTabTest"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="350"
+        Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Canvas HorizontalAlignment="Stretch"
+                x:Name="Mycanvas">
+            <Thumb x:Name="myitem"
+                   DragStarted="Myitem_OnDragStarted"
+                   Canvas.Left="50"
+                   Canvas.Top="50"
+                   DragDelta="Myitem_OnDragDelta"
+                   DragCompleted="Myitem_OnDragCompleted"
+                   Width="40"
+                   Height="40"
+                   Background="#67000000"></Thumb>
+            <Thumb x:Name="myitem2"
+                   DragStarted="Myitem_OnDragStarted"
+                   Canvas.Left="150"
+                   Canvas.Top="50"
+                   DragDelta="Myitem_OnDragDelta"
+                   DragCompleted="Myitem_OnDragCompleted"
+                   Width="40"
+                   Height="40"
+                   Background="#0080De"></Thumb>
+        </Canvas>
+
+        <!--<StackPanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Orientation="Horizontal">
+            <Thumb Width="40"
+                   Height="40"
+                   DragStarted="Myitem_OnDragStarted"
+                   DragDelta="Myitem_OnDragDelta"
+                   DragCompleted="Myitem_OnDragCompleted"
+                   Background="#67000000"></Thumb>
+            <Thumb Width="40"
+                   DragStarted="Myitem_OnDragStarted"
+                   DragDelta="Myitem_OnDragDelta"
+                   DragCompleted="Myitem_OnDragCompleted"
+                   Height="40"
+                   Background="#67000000"></Thumb>
+            <Thumb Width="40"
+                   Height="40"
+                   DragStarted="Myitem_OnDragStarted"
+                   DragDelta="Myitem_OnDragDelta"
+                   DragCompleted="Myitem_OnDragCompleted"
+                   Background="#67000000"></Thumb>
+            <Thumb Width="40"
+                   DragStarted="Myitem_OnDragStarted"
+                   DragDelta="Myitem_OnDragDelta"
+                   DragCompleted="Myitem_OnDragCompleted"
+                   Height="40"
+                   Background="#67000000"></Thumb>
+            <Thumb Width="40"
+                   DragStarted="Myitem_OnDragStarted"
+                   DragDelta="Myitem_OnDragDelta"
+                   DragCompleted="Myitem_OnDragCompleted"
+                   Height="40"
+                   Background="#67000000"></Thumb>
+            <Thumb Width="40"
+                   DragStarted="Myitem_OnDragStarted"
+                   DragDelta="Myitem_OnDragDelta"
+                   DragCompleted="Myitem_OnDragCompleted"
+                   Height="40"
+                   Background="#67000000"></Thumb>
+        </StackPanel>-->
+        <ItemsControl x:Name="ItemsControl">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"></StackPanel>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.Items>
+                <Thumb Width="40"
+                       DragStarted="Myitem_OnDragStarted"
+                       DragDelta="Myitem_OnDragDelta"
+                       DragCompleted="Myitem_OnDragCompleted"
+                       Height="40"
+                       Background="#67000000"></Thumb>
+                <Thumb Width="40"
+                       DragStarted="Myitem_OnDragStarted"
+                       DragDelta="Myitem_OnDragDelta"
+                       DragCompleted="Myitem_OnDragCompleted"
+                       Height="40"
+                       Background="#69008900"></Thumb>
+                <Thumb Width="40"
+                       DragStarted="Myitem_OnDragStarted"
+                       DragDelta="Myitem_OnDragDelta"
+                       DragCompleted="Myitem_OnDragCompleted"
+                       Height="40"
+                       Background="#67900000"></Thumb>
+                <Thumb Width="40"
+                       DragStarted="Myitem_OnDragStarted"
+                       DragDelta="Myitem_OnDragDelta"
+                       DragCompleted="Myitem_OnDragCompleted"
+                       Height="40"
+                       Background="#67000090"></Thumb>
+            </ItemsControl.Items>
+        </ItemsControl>
+
+        <ItemsControl Grid.Row="1"
+                      Loaded="FrameworkElement_OnLoaded">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"></StackPanel>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <Thumb Width="40"
+                   DragStarted="Myitem_OnDragStarted"
+                   DragDelta="Myitem_OnDragDelta"
+                   DragCompleted="Myitem_OnDragCompleted"
+                   Height="40"
+                   Background="#67000090"></Thumb>
+        </ItemsControl>
+    </Grid>
+</Window>
