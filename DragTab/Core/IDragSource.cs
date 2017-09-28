@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DragTabTest.Core
+namespace DragTab.Core
 {
     public interface IDragSource : IDragDropHandle
     {
         /// <summary>
         /// Source
         /// </summary>
-        object DragSource { get; set; }
+        //object DragSource { get; set; }
 
     }
 }

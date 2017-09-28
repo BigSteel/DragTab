@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DragTabTest.Core
+namespace DragTab.Core
 {
     public delegate void DragStartedEventHandle(object sender, DragDropEventArgs args);
     public delegate void DragDeltaEventHandle(object sender, DragDropEventArgs args);

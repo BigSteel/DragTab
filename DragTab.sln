@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DragTabTest", "DragTabTest\DragTabTest.csproj", "{16965D2D-04D5-4625-8136-9E58492CDFA2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DragTab", "DragTab\DragTab.csproj", "{16965D2D-04D5-4625-8136-9E58492CDFA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DragTabSamples", "DragTabSamples\DragTabSamples.csproj", "{3F51A445-A71F-420B-BCA9-5E2EC30F688D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{16965D2D-04D5-4625-8136-9E58492CDFA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16965D2D-04D5-4625-8136-9E58492CDFA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16965D2D-04D5-4625-8136-9E58492CDFA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F51A445-A71F-420B-BCA9-5E2EC30F688D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F51A445-A71F-420B-BCA9-5E2EC30F688D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F51A445-A71F-420B-BCA9-5E2EC30F688D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F51A445-A71F-420B-BCA9-5E2EC30F688D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

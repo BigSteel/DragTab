@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DragTabTest.Core
+namespace DragTab.Core
 {
     public class DragDropEventArgs : EventArgs
     {

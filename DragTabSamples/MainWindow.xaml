@@ -1,0 +1,36 @@
+﻿<Window x:Class="DragTabSamples.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DragTabSamples"
+        xmlns:control="clr-namespace:DragTab.Control;assembly=DragTab"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="350"
+        Width="525">
+    <Grid>
+        <control:DragTabControl x:Name="DragTabControl"
+                                x:FieldModifier="public"
+                                Foreground="Black"
+                                Style="{DynamicResource DragTabControlStyle}">
+            <TabItem Background="Red"
+                     Width="100"
+                     Height="30"
+                     IsSelected="True"
+                     Header="产品监控">产品监控</TabItem>
+            <TabItem Background="Yellow"
+                     Width="100"
+                     Height="30"
+                     Header="快速交易">快速交易</TabItem>
+            <TabItem Background="Green"
+                     HorizontalAlignment="Center"
+                     HorizontalContentAlignment="Center"
+                     VerticalAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     Width="100"
+                     Height="30"
+                     Header="批量交易">批量交易</TabItem>
+        </control:DragTabControl>
+    </Grid>
+</Window>

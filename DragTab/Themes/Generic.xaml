@@ -1,0 +1,137 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DragTab.Control">
+    <Style x:Key="InvisibleThumbStyle"
+           TargetType="{x:Type Thumb}">
+        <Setter Property="Stylus.IsPressAndHoldEnabled"
+                Value="false" />
+        <Setter Property="Background"
+                Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+        <Setter Property="Foreground"
+                Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Grid Background="{TemplateBinding Background}">
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="DragTabItemStyle"
+           TargetType="local:DragTabItem">
+        <Setter Property="Background"
+                Value="#89000000"></Setter>
+        <!--<Setter Property="MinWidth"
+                Value="250"></Setter>
+        <Setter Property="MinHeight"
+                Value="30"></Setter>-->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid>
+                        <Border BorderThickness="{TemplateBinding BorderThickness}"
+                                Padding="{TemplateBinding Padding}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                Background="{TemplateBinding Background}"
+                                SnapsToDevicePixels="True">
+                            <Grid>
+                                <ContentPresenter  Content="{TemplateBinding ContentControl.Content}"
+                                                   ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}"
+                                                   ContentStringFormat="{TemplateBinding ContentControl.ContentStringFormat}"
+                                                   HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}"
+                                                   VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}"
+                                                   SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                                <Thumb Background="Transparent"
+                                       HorizontalAlignment="Stretch"
+                                       VerticalContentAlignment="Stretch"
+                                       x:Name="PART_Thumb"
+                                       Style="{StaticResource InvisibleThumbStyle}"
+                                       VerticalAlignment="Stretch" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type local:DragItemsControl}"
+           x:Key="DragItemsControlStyle">
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalAlignment"
+                Value="Stretch" />
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel IsItemsHost="True"
+                                Orientation="Horizontal"
+                                VirtualizingStackPanel.VirtualizationMode="Recycling"
+                                HorizontalAlignment="Left" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:DragItemsControl}">
+                    <Border BorderThickness="{TemplateBinding Border.BorderThickness}"
+                            Padding="{TemplateBinding Control.Padding}"
+                            BorderBrush="{TemplateBinding Border.BorderBrush}"
+                            Background="{TemplateBinding Panel.Background}"
+                            SnapsToDevicePixels="True">
+                        <ScrollViewer HorizontalScrollBarVisibility="Hidden"
+                                      VerticalScrollBarVisibility="Hidden"
+                                      HorizontalAlignment="Stretch"
+                                      VerticalAlignment="Stretch">
+                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}"
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Stretch" />
+                            <!--Width="{TemplateBinding ItemsPresenterWidth}"
+                            Height="{TemplateBinding ItemsPresenterHeight}"-->
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="local:DragItemsControl"
+           BasedOn="{StaticResource DragItemsControlStyle}"></Style>
+    <Style x:Key="DragTabControlStyle"
+           TargetType="local:DragTabControl">
+        <Setter Property="ItemContainerStyle"
+                Value="{StaticResource DragTabItemStyle}"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:DragTabControl">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border x:Name="contentPanel"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                Grid.Column="0"
+                                KeyboardNavigation.DirectionalNavigation="Contained"
+                                Grid.Row="1"
+                                KeyboardNavigation.TabIndex="2"
+                                KeyboardNavigation.TabNavigation="Local"
+                                Margin="0 -1 0 0">
+                            <Grid x:Name="PART_ItemsHolder" />
+                        </Border>
+                        <local:DragItemsControl x:Name="PART_HeaderItemsControl"
+                                                ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Items}"
+                                                ItemContainerStyle="{TemplateBinding ItemContainerStyle}"
+                                                KeyboardNavigation.TabIndex="1"
+                                                ItemTemplate="{TemplateBinding HeaderItemTemplate}"
+                                                Style="{StaticResource DragItemsControlStyle}">
+                        </local:DragItemsControl>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="local:DragTabControl"
+           BasedOn="{StaticResource DragTabControlStyle}"></Style>
+</ResourceDictionary>

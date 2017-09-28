@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DragTabTest.Core
+namespace DragTab.Core
 {
-    public class DragChache
+    internal class DragChache
     {
         public static object DragingSource { get; set; }
     }
