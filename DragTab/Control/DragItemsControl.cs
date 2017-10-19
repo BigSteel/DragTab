@@ -103,9 +103,14 @@ namespace DragTab.Control
                     var oldItemsControl = ((DependencyObject)DragChache.DragingSource).GetParentObject() as ItemsControl;
                     if (ItemsSource == null) return;
                     oldItemsControl.Items.Remove(DragChache.DragingSource);
-                    ((ItemCollection)ItemsSource)?.Insert(insertIndex, DragChache.DragingSource);
 
+                    ((ItemCollection)ItemsSource)?.Insert(insertIndex, DragChache.DragingSource);
+                    if (oldItemsControl.Items.Count == 0)
+                    {
+                        Window.GetWindow(oldItemsControl)?.Close();
+                    }
                     ThumbDragCompleted(null, null);
+                    Window.GetWindow(this).Activate();
                 }
             }
         }
@@ -114,17 +119,18 @@ namespace DragTab.Control
         {
             DragTabItem container = null;
             Thumb tb = e.OriginalSource as Thumb;
+
             if (tb != null)
             {
                 container = tb.TryFindParent<DragTabItem>();
             }
             DragChache.DragingSource = container.Content;
-
+            DragChache.PointInElement = Mouse.GetPosition(container);
             if (Items.Count == 1)
             {
                 var win = Window.GetWindow(this);
                 win.Opacity = 0;
-               
+                //win.Visibility = Visibility.Collapsed;
             }
             EffectWindow.ShowEffect(container);
         }
@@ -192,7 +198,9 @@ namespace DragTab.Control
                 {
                     TabItem = (TabItem)DragChache.DragingSource,
                     IsAtTargetDragTabControl = false,
-                    SourceTabControl = this.TryFindParent<DragTabControl>()
+                    SourceTabControl = this.TryFindParent<DragTabControl>(),
+                    MouseLastPoint = Native.GetCursorPos(),
+                    StartPointInElement = DragChache.PointInElement
                 });
             }
             if (Items.Count == 0)
@@ -201,7 +209,9 @@ namespace DragTab.Control
             }
             if (Items.Count == 1)
             {
-                Window.GetWindow(this).Opacity = 1;
+                var win = Window.GetWindow(this);
+                win.Opacity = 1;
+                //win.Visibility = Visibility.Visible;
             }
             DragChache.DragingSource = null;
         }
@@ -216,12 +226,8 @@ namespace DragTab.Control
             var pos = Mouse.GetPosition(this).ToWpf();
             //鼠标没有在DragImtesControls范围内
             return PosInMeasureSize(pos);
+            //return Mouse.Capture(this);
         }
-
-        //protected override Size MeasureOverride(Size constraint)
-        //{
-        //    return base.MeasureOverride(constraint);
-        //}
 
 
         protected override bool IsItemItsOwnContainerOverride(object item)
