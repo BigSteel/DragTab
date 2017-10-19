@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace DragTab.Control
@@ -28,5 +29,11 @@ namespace DragTab.Control
         /// </summary>
         public DragTabControl TargetTabControl { get; internal set; }
 
+        public Point MouseLastPoint { get; set; }
+
+        /// <summary>
+        /// Mouse在DragTabItem的初始位置
+        /// </summary>
+        public Point StartPointInElement { get; set; }
     }
 }

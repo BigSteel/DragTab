@@ -136,8 +136,12 @@ namespace DragTab.Control
                     {
                         ((TabItem)_previousSelection.Target).IsSelected = true;
                         SelectedItem = _previousSelection.Target;
-                        UpdateSelectedItem();
                     }
+                    if (SelectedItem == null && HasItems)
+                    {
+                        SelectedItem = Items[0];
+                    }
+                    UpdateSelectedItem();
                     //Console.WriteLine("Remove");
                     break;
                 case NotifyCollectionChangedAction.Move:

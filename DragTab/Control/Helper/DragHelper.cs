@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls.Primitives;
+using DragTab.Core;
 
 namespace DragTab.Control.Helper
 {
@@ -24,6 +25,7 @@ namespace DragTab.Control.Helper
             {
                 args.SourceTabControl.Items.Remove(args.TabItem);
             }
+
             DragCompletedEvent?.Invoke(sender, args);
         }
     }
