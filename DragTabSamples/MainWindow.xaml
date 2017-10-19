@@ -5,32 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DragTabSamples"
         xmlns:control="clr-namespace:DragTab.Control;assembly=DragTab"
+        WindowStyle="None"
+        AllowsTransparency="True"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="350"
         Width="525">
-    <Grid>
-        <control:DragTabControl x:Name="DragTabControl"
-                                x:FieldModifier="public"
-                                Foreground="Black"
-                                Style="{DynamicResource DragTabControlStyle}">
-            <TabItem Background="Red"
-                     Width="100"
-                     Height="30"
-                     IsSelected="True"
-                     Header="产品监控">产品监控</TabItem>
-            <TabItem Background="Yellow"
-                     Width="100"
-                     Height="30"
-                     Header="快速交易">快速交易</TabItem>
-            <TabItem Background="Green"
-                     HorizontalAlignment="Center"
-                     HorizontalContentAlignment="Center"
-                     VerticalAlignment="Center"
-                     VerticalContentAlignment="Center"
-                     Width="100"
-                     Height="30"
-                     Header="批量交易">批量交易</TabItem>
-        </control:DragTabControl>
-    </Grid>
+    <Border BorderThickness="1"
+            BorderBrush="#333333">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Border MouseLeftButtonDown="MainWindow_OnPreviewMouseLeftButtonDown"
+                    Background="#898989">
+                <Button Width="20"
+                        Height="20"
+                        HorizontalAlignment="Right"
+                        Click="ButtonBase_OnClick"
+                        Content="X"></Button>
+            </Border>
+            <control:DragTabControl x:Name="DragTabControl"
+                                    x:FieldModifier="public"
+                                    Grid.Row="1"
+                                    Foreground="Black"
+                                    Style="{DynamicResource DragTabControlStyle}">
+                <TabItem Background="Red"
+                         Width="100"
+                         Height="30"
+                         IsSelected="True"
+                         Header="产品监控">产品监控</TabItem>
+                <TabItem Background="Yellow"
+                         Width="100"
+                         Height="30"
+                         Header="快速交易">快速交易</TabItem>
+                <TabItem Background="Green"
+                         HorizontalAlignment="Center"
+                         HorizontalContentAlignment="Center"
+                         VerticalAlignment="Center"
+                         VerticalContentAlignment="Center"
+                         Width="100"
+                         Height="30"
+                         Header="批量交易">批量交易</TabItem>
+            </control:DragTabControl>
+        </Grid>
+    </Border>
 </Window>

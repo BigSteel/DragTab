@@ -16,23 +16,9 @@ namespace DragTabSamples
     /// </summary>
     public partial class App : Application
     {
-        [StructLayout(LayoutKind.Sequential)]
-        public struct POINT
-        {
-            public int X;
-            public int Y;
-
-            public POINT(int x, int y)
-            {
-                this.X = x;
-                this.Y = y;
-            }
-        }
-
-        [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        public static extern bool GetCursorPos(out POINT pt);
         protected override void OnStartup(StartupEventArgs e)
         {
+            ShutdownMode = ShutdownMode.OnLastWindowClose;
             DragHelper.DragCompletedEvent += DragHelper_DragCompletedEvent;
             MainWindow win = new MainWindow();
             win.Show();
@@ -43,14 +29,11 @@ namespace DragTabSamples
         private void DragHelper_DragCompletedEvent(object sender, DragTab.Control.DragTabCompletedEventArgs args)
         {
             MainWindow win = new MainWindow();
-            win.WindowStyle = WindowStyle.None;
-            win.AllowsTransparency = true;
             win.DragTabControl.Items.Clear();
             win.DragTabControl.Items.Add(args.TabItem);
-            POINT point = new POINT();
-            GetCursorPos(out point);
-            win.Left = point.X;
-            win.Top = point.Y;
+            var point = args.StartPointInElement;
+            win.Left = args.MouseLastPoint.X - point.X;
+            win.Top = args.MouseLastPoint.Y - 20 - point.Y;
             win.Show();
         }
     }
